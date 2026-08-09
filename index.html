@@ -110,6 +110,8 @@ nav a:hover{
     font-weight:600;
     transition:.3s;
     display:inline-block;
+    cursor:pointer;
+    border: none;
 }
 
 .btn-primary{
@@ -129,12 +131,6 @@ nav a:hover{
 
 .btn-secondary:hover{
     background:#1d1d26;
-}
-
-.btn-disabled{
-    background:#22222d;
-    color:#888;
-    cursor:not-allowed;
 }
 
 section{
@@ -231,6 +227,84 @@ footer{
     margin-top:80px;
 }
 
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(9, 9, 13, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: #111118;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.modal-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    color: #9c9c9c;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 14px 18px;
+    background: #09090d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: .3s;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-input:focus {
+    border-color: #8c52ff;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.close-modal:hover {
+    color: white;
+}
+
+.error-msg {
+    color: #ff5252;
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    display: none;
+}
+
 @media(max-width:768px){
 
 .hero h1{
@@ -280,7 +354,7 @@ nav{
         <a href="https://discord.gg/ExrVFB3dC"
            target="_blank"
            class="btn btn-secondary">
-           Discord
+            Discord
         </a>
 
     </div>
@@ -342,18 +416,25 @@ nav{
             <span class="version">v1.0 Beta</span>
         </p>
 
-        <a class="btn btn-disabled">
-            Скоро
-        </a>
-
-        <p style="margin-top:25px;">
-            Загрузка клиента пока недоступна.
-            Следите за обновлениями в Discord.
-        </p>
+        <button class="btn btn-primary" onclick="openModal()">
+            Скачать VexDLC Beta
+        </button>
 
     </div>
 
 </section>
+
+<!-- Модальное окно ввода кода -->
+<div class="modal" id="accessModal">
+    <div class="modal-content">
+        <button class="close-modal" onclick="closeModal()">&times;</button>
+        <h3>Доступ к Beta</h3>
+        <p>Введите код доступа для скачивания клиента</p>
+        <input type="password" id="accessCode" class="modal-input" placeholder="Введите код доступа">
+        <div id="errorMsg" class="error-msg">Неверный код доступа!</div>
+        <button class="btn btn-primary" style="width: 100%;" onclick="checkCode()">Подтвердить</button>
+    </div>
+</div>
 
 <section id="discord" class="discord">
 
@@ -375,6 +456,43 @@ nav{
 <footer>
     © 2026 VexDLC. All Rights Reserved.
 </footer>
+
+<script>
+    // Код доступа, привязанный к твоей ссылке
+    const CORRECT_CODE = "VEX-BETA-2026";
+    const DOWNLOAD_URL = "https://workupload.com/start/XFzKV9MeqrE";
+
+    function openModal() {
+        document.getElementById('accessModal').style.display = 'flex';
+        document.getElementById('accessCode').value = '';
+        document.getElementById('errorMsg').style.display = 'none';
+    }
+
+    function closeModal() {
+        document.getElementById('accessModal').style.display = 'none';
+    }
+
+    function checkCode() {
+        const codeInput = document.getElementById('accessCode').value.trim();
+        const errorMsg = document.getElementById('errorMsg');
+
+        if(codeInput === CORRECT_CODE) {
+            alert("Код верный! Перенаправление на скачивание...");
+            closeModal();
+            window.open(DOWNLOAD_URL, '_blank');
+        } else {
+            errorMsg.style.display = 'block';
+        }
+    }
+
+    // Закрытие по клику вне модального окна
+    window.onclick = function(event) {
+        let modal = document.getElementById('accessModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+</script>
 
 </body>
 </html>
