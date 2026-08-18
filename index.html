@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VexDLC | Minecraft Client</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Inter',sans-serif;
+    font-family:'Plus Jakarta Sans',sans-serif;
 }
 
 html{
@@ -20,18 +20,20 @@ html{
 }
 
 body{
-    background:#09090d;
+    background:#050507;
     color:#fff;
     overflow-x:hidden;
 }
 
+/* Черно-красный футуристический фон */
 body::before{
     content:"";
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at 20% 20%,rgba(140,82,255,.18),transparent 30%),
-    radial-gradient(circle at 80% 60%,rgba(42,169,255,.18),transparent 30%);
+    radial-gradient(circle at 15% 15%,rgba(255,20,50,.12),transparent 40%),
+    radial-gradient(circle at 85% 80%,rgba(180,0,20,.08),transparent 40%),
+    radial-gradient(circle at 50% 50%,rgba(255,50,50,.04),transparent 50%);
     z-index:-1;
 }
 
@@ -43,33 +45,49 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    backdrop-filter:blur(15px);
-    background:rgba(9,9,13,.7);
-    border-bottom:1px solid rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+    background:rgba(5,5,7,.75);
+    border-bottom:1px solid rgba(255,255,255,.04);
     z-index:1000;
 }
 
 .logo{
-    font-size:30px;
+    font-size:26px;
     font-weight:800;
-    background:linear-gradient(90deg,#8c52ff,#2aa9ff);
+    letter-spacing: -0.5px;
+    background:linear-gradient(135deg,#ff2a4d,#ff6b81);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #ff2a4d;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #ff2a4d;
 }
 
 nav{
     display:flex;
-    gap:25px;
+    gap:30px;
 }
 
 nav a{
     text-decoration:none;
-    color:#ccc;
+    color:#94a3b8;
+    font-weight: 500;
+    font-size: 15px;
     transition:.3s;
 }
 
 nav a:hover{
-    color:#8c52ff;
+    color:#fff;
+    text-shadow: 0 0 10px rgba(255,42,77,0.5);
 }
 
 .hero{
@@ -79,152 +97,254 @@ nav a:hover{
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:120px 20px 40px;
+    padding:140px 20px 60px;
+    position: relative;
+}
+
+.badge-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 42, 77, 0.1);
+    border: 1px solid rgba(255, 42, 77, 0.25);
+    padding: 6px 16px;
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ff6b81;
+    margin-bottom: 25px;
+    box-shadow: 0 0 20px rgba(255,42,77,0.1);
 }
 
 .hero h1{
-    font-size:90px;
+    font-size:80px;
     font-weight:800;
-    margin-bottom:15px;
+    letter-spacing: -2px;
+    margin-bottom:20px;
+    line-height: 1.1;
+    background: linear-gradient(180deg, #fff 30%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero p{
-    color:#a7a7a7;
-    max-width:700px;
-    font-size:20px;
+    color:#94a3b8;
+    max-width:650px;
+    font-size:18px;
     line-height:1.7;
     margin-bottom:40px;
 }
 
 .buttons{
     display:flex;
-    gap:15px;
+    gap:16px;
     flex-wrap:wrap;
     justify-content:center;
 }
 
 .btn{
     text-decoration:none;
-    padding:15px 32px;
-    border-radius:14px;
+    padding:16px 32px;
+    border-radius:16px;
     font-weight:600;
-    transition:.3s;
-    display:inline-block;
+    font-size: 15px;
+    transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
     cursor:pointer;
     border: none;
 }
 
 .btn-primary{
-    background:linear-gradient(90deg,#8c52ff,#2aa9ff);
+    background:linear-gradient(135deg,#ff2a4d,#c9182c);
     color:white;
+    box-shadow: 0 10px 30px -10px rgba(255, 42, 77, 0.5);
 }
 
 .btn-primary:hover{
-    transform:translateY(-4px);
+    transform:translateY(-3px);
+    box-shadow: 0 15px 35px -10px rgba(255, 42, 77, 0.7);
 }
 
 .btn-secondary{
-    background:#14141b;
+    background:rgba(255, 255, 255, 0.03);
     color:white;
-    border:1px solid rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover{
-    background:#1d1d26;
+    background:rgba(255, 255, 255, 0.07);
+    border-color:rgba(255,255,255,0.15);
+    transform:translateY(-3px);
 }
 
 section{
-    padding:90px 8%;
+    padding:100px 8%;
 }
 
 .title{
     text-align:center;
-    font-size:42px;
-    margin-bottom:50px;
+    font-size:40px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom:15px;
+}
+
+.subtitle-section {
+    text-align: center;
+    color: #64748b;
+    font-size: 16px;
+    margin-bottom: 50px;
 }
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
 }
 
 .card{
-    background:#111118;
-    border:1px solid rgba(255,255,255,.05);
-    border-radius:18px;
-    padding:30px;
-    transition:.3s;
+    background:linear-gradient(145deg, rgba(14,14,18,0.6), rgba(8,8,11,0.8));
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:24px;
+    padding:35px 30px;
+    transition:all .4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255,42,77,0.1), transparent 50%);
+    opacity: 0;
+    transition: opacity .4s;
 }
 
 .card:hover{
-    transform:translateY(-6px);
-    border-color:#8c52ff;
+    transform:translateY(-8px);
+    border-color:rgba(255,42,77,0.3);
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.7);
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-icon {
+    font-size: 28px;
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 12px;
+    background: rgba(255,42,77,0.1);
+    border-radius: 14px;
+    border: 1px solid rgba(255,42,77,0.2);
 }
 
 .card h3{
-    margin-bottom:12px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom:10px;
 }
 
 .card p{
-    color:#9c9c9c;
+    color:#94a3b8;
     line-height:1.6;
+    font-size: 14px;
 }
 
 .bypasses{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:15px;
+    gap:14px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .tag{
-    background:#111118;
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:999px;
-    padding:14px 24px;
+    background:rgba(14, 14, 18, 0.7);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:14px;
+    padding:16px 28px;
     font-weight:600;
+    font-size: 15px;
+    transition: all .3s;
+    backdrop-filter: blur(10px);
+}
+
+.tag:hover {
+    border-color: #ff2a4d;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px -10px rgba(255,42,77,0.3);
+    color: #ff6b81;
 }
 
 .download{
     text-align:center;
-    background:#111118;
-    border-radius:20px;
+    background:linear-gradient(145deg, rgba(14,14,18,0.8), rgba(8,8,11,0.9));
+    border-radius:28px;
     max-width:900px;
     margin:auto;
-    border:1px solid rgba(255,255,255,.05);
-    padding:60px 30px;
+    border:1px solid rgba(255,255,255,0.06);
+    padding:70px 40px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.download::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ff2a4d, transparent);
 }
 
 .download h2{
     margin-bottom:15px;
+    font-size: 36px;
+    font-weight: 800;
 }
 
 .download p{
-    color:#aaa;
-    margin-bottom:25px;
+    color:#94a3b8;
+    margin-bottom:30px;
+    font-size: 16px;
 }
 
 .version{
-    color:#8c52ff;
+    color:#ff6b81;
     font-weight:700;
+    background: rgba(255,42,77,0.1);
+    padding: 4px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,42,77,0.2);
 }
 
 .discord{
     text-align:center;
+    background: radial-gradient(circle at center, rgba(255,42,77,0.04) 0%, transparent 70%);
 }
 
 .discord p{
-    color:#aaa;
-    margin-bottom:25px;
+    color:#94a3b8;
+    margin-bottom:30px;
+    font-size: 16px;
 }
 
 footer{
     text-align:center;
     padding:40px;
-    color:#666;
-    border-top:1px solid rgba(255,255,255,.05);
-    margin-top:80px;
+    color:#475569;
+    font-size: 14px;
+    border-top:1px solid rgba(255,255,255,0.04);
 }
 
 /* Модальное окно */
@@ -232,8 +352,8 @@ footer{
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(9, 9, 13, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(5, 5, 7, 0.85);
+    backdrop-filter: blur(15px);
     z-index: 2000;
     justify-content: center;
     align-items: center;
@@ -241,84 +361,92 @@ footer{
 }
 
 .modal-content {
-    background: #111118;
+    background: #0b0b0e;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 40px;
+    border-radius: 28px;
+    padding: 45px 35px;
     width: 100%;
-    max-width: 420px;
+    max-width: 440px;
     text-align: center;
     position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.7);
 }
 
 .modal-content h3 {
-    font-size: 24px;
+    font-size: 26px;
+    font-weight: 800;
     margin-bottom: 10px;
 }
 
 .modal-content p {
-    color: #9c9c9c;
+    color: #94a3b8;
     font-size: 14px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .modal-input {
     width: 100%;
-    padding: 14px 18px;
-    background: #09090d;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    padding: 16px 20px;
+    background: #050507;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
     color: white;
     font-size: 16px;
     outline: none;
     transition: .3s;
     margin-bottom: 20px;
     text-align: center;
+    letter-spacing: 2px;
+    font-weight: 600;
 }
 
 .modal-input:focus {
-    border-color: #8c52ff;
+    border-color: #ff2a4d;
+    box-shadow: 0 0 15px rgba(255,42,77,0.2);
 }
 
 .close-modal {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
+    top: 24px;
+    right: 24px;
+    background: rgba(255,255,255,0.05);
     border: none;
-    color: #888;
+    color: #94a3b8;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 20px;
     cursor: pointer;
     transition: .3s;
 }
 
 .close-modal:hover {
+    background: rgba(255,255,255,0.1);
     color: white;
 }
 
 .error-msg {
-    color: #ff5252;
+    color: #ff2a4d;
     font-size: 13px;
-    margin-top: -10px;
-    margin-bottom: 15px;
+    margin-top: -12px;
+    margin-bottom: 18px;
     display: none;
+    font-weight: 500;
 }
 
 @media(max-width:768px){
-
 .hero h1{
-    font-size:58px;
+    font-size:48px;
 }
-
 .title{
-    font-size:32px;
+    font-size:30px;
 }
-
 nav{
     display:none;
 }
-
 }
 </style>
 </head>
@@ -337,24 +465,27 @@ nav{
 
 <section class="hero">
 
-    <h1>VexDLC</h1>
+    <div class="badge-new">
+        <span>Обновление v1.4 Beta уже доступно</span>
+    </div>
+
+    <h1>VexDLC Client</h1>
 
     <p>
-        Minecraft Client для версии 1.21.4.
-        Поддержка серверов Funtime, ReallyWorld,
-        Sloth, HvH и Universal (OLD).
+        Элитный Minecraft Client для версии 1.21.4. 
+        Максимальная производительность и лучшие обходы для доминирования на серверах.
     </p>
 
     <div class="buttons">
 
         <a href="#download" class="btn btn-primary">
-            Скачать
+            Скачать клиент
         </a>
 
         <a href="https://discord.gg/ExrVFB3dC"
            target="_blank"
            class="btn btn-secondary">
-            Discord
+            Наш Discord
         </a>
 
     </div>
@@ -364,27 +495,32 @@ nav{
 <section id="features">
 
     <h2 class="title">Возможности</h2>
+    <p class="subtitle-section">Все необходимое для победы в одной сборке</p>
 
     <div class="grid">
 
         <div class="card">
-            <h3>⚔ Combat</h3>
-            <p>Боевые функции для PvP и HvH.</p>
+            <div class="card-icon">⚔</div>
+            <h3>Combat</h3>
+            <p>Продвинутые боевые модули для доминирования в PvP и HvH столкновениях.</p>
         </div>
 
         <div class="card">
-            <h3>🏃 Movement</h3>
-            <p>Модули передвижения и удобства.</p>
+            <div class="card-icon">🏃</div>
+            <h3>Movement</h3>
+            <p>Плавные и безопасные модули передвижения для быстрого перемещения по миру.</p>
         </div>
 
         <div class="card">
-            <h3>👁 Render</h3>
-            <p>ESP, HUD и визуальные функции.</p>
+            <div class="card-icon">👁</div>
+            <h3>Render</h3>
+            <p>Информативный HUD, детализированный ESP и тонкая настройка визуальной части.</p>
         </div>
 
         <div class="card">
-            <h3>🛠 Utility</h3>
-            <p>Полезные инструменты и настройки.</p>
+            <div class="card-icon">🛠</div>
+            <h3>Utility</h3>
+            <p>Полезные инструменты, автоматизация и гибкая система конфигурации.</p>
         </div>
 
     </div>
@@ -394,13 +530,15 @@ nav{
 <section id="bypass">
 
     <h2 class="title">Поддерживаемые обходы</h2>
+    <p class="subtitle-section">Защиты серверов больше не преграда</p>
 
     <div class="bypasses">
         <div class="tag">Funtime</div>
         <div class="tag">ReallyWorld</div>
         <div class="tag">Sloth</div>
+        <div class="tag">SpookyTime</div>
         <div class="tag">HvH</div>
-        <div class="tag">Universal (OLD)</div>
+        <div class="tag">Universal</div>
     </div>
 
 </section>
@@ -412,22 +550,13 @@ nav{
         <h2>Скачать VexDLC</h2>
 
         <p>
-            Последняя версия:
-            <span class="version">v1.0 Beta</span>
+            Последняя стабильная версия:
+            <span class="version">v1.4 Beta</span>
         </p>
 
-        <button class="btn btn-primary" onclick="openModal()" style="margin-bottom: 10px;">
+        <button class="btn btn-primary" onclick="openModal()" style="width: 100%; max-width: 280px;">
             Скачать VexDLC Beta
         </button>
-        
-        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-            <a href="https://minecraft-inside.ru/download/423208/" target="_blank" class="btn btn-secondary">
-                Скачать FabricAPI
-            </a>
-            <a href="https://github.com/cabaletta/baritone/releases/download/v1.13.1/baritone-api-fabric-1.13.1.jar" target="_blank" class="btn btn-secondary">
-                Скачать Baritone
-            </a>
-        </div>
 
     </div>
 
@@ -438,8 +567,8 @@ nav{
     <div class="modal-content">
         <button class="close-modal" onclick="closeModal()">&times;</button>
         <h3>Доступ к Beta</h3>
-        <p>Введите код доступа для скачивания клиента</p>
-        <input type="password" id="accessCode" class="modal-input" placeholder="Введите код доступа">
+        <p>Введите код доступа для получения файла</p>
+        <input type="password" id="accessCode" class="modal-input" placeholder="КОД ДОСТУПА">
         <div id="errorMsg" class="error-msg">Неверный код доступа!</div>
         <button class="btn btn-primary" style="width: 100%;" onclick="checkCode()">Подтвердить</button>
     </div>
@@ -450,8 +579,8 @@ nav{
     <h2 class="title">Сообщество VexDLC</h2>
 
     <p>
-        Присоединяйтесь к нашему Discord-серверу,
-        чтобы получать новости, обновления и поддержку.
+        Присоединяйтесь к нашему Discord-серверу,<br>
+        чтобы получать новости, обновления и круглосуточную поддержку.
     </p>
 
     <a href="https://discord.gg/ExrVFB3dC"
@@ -467,9 +596,8 @@ nav{
 </footer>
 
 <script>
-    // Код доступа, привязанный к твоей ссылке
-    const CORRECT_CODE = "VEX-N43-BX2";
-    const DOWNLOAD_URL = "https://drive.google.com/file/d/1wAVorGI5MhtMBMHMeTj0wy1eGmGSe7t_/view?usp=drive_link";
+    const CORRECT_CODE = "VEX-BETA-27H-K1V";
+    const DOWNLOAD_URL = "https://drive.google.com/file/d/1yWvo4ZD4uZk3cEd8yWjKdGbfTRHBHN3M/view?usp=sharing";
 
     function openModal() {
         document.getElementById('accessModal').style.display = 'flex';
@@ -494,7 +622,6 @@ nav{
         }
     }
 
-    // Закрытие по клику вне модального окна
     window.onclick = function(event) {
         let modal = document.getElementById('accessModal');
         if (event.target == modal) {
